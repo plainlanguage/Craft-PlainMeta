@@ -1,0 +1,99 @@
+.plain-meta {
+	margin-top: 25px;
+}
+
+.plain-meta .group {
+	background-color: #F9FAFA;
+	border: 1px solid #DFE0E0;
+	border-radius: 4px;
+	margin-bottom: 25px;
+}
+
+.plain-meta .group.last {
+	margin-bottom: 0;
+}
+
+.plain-meta .group .block {
+	border-bottom: 1px solid #DFE0E0;
+	border-top: 1px solid #ffffff;
+	padding: 20px;
+}
+
+.plain-meta .group .addl-fields .block {
+	border: 0;
+	padding: 0;
+}
+
+.plain-meta .group .block:first-child {
+	border-top: none;
+}
+
+.plain-meta .group .block:last-child {
+	border-bottom: none;
+}
+
+.plain-meta header {
+	margin-bottom: 10px;
+}
+
+.plain-meta h3 {
+	font-size: 14px;
+	margin: 0;
+}
+
+.plain-meta h3 + p {
+	color: #8F98A3;
+	font-size: 13px;
+	margin: 3px 0 0 0;
+}
+
+.plain-meta .max .field {
+	margin: 0;
+}
+
+.plain-meta .countdown {
+	color: #8F98A3;
+	font-size: 11px;
+	text-align: right;
+}
+
+.plain-meta .countdown .live {
+	font-weight: 700;
+}
+
+.plain-meta .countdown .live.nope {
+	color: #DA5A47;
+}
+
+.plain-meta .is-hidden {
+	display: none;
+}
+
+.plain-meta .is-visible {
+	display: inherit;
+}
+
+.plain-meta input.uppercase {
+	text-transform: uppercase;
+}
+
+.plain-meta .platform {
+	padding-bottom: 20px;
+}
+
+.plain-meta .platform:last-child {
+	padding-bottom: 0;
+}
+
+.plain-meta .platform h4 {
+	border-bottom: 1px solid #DFE0E0;
+	margin: 0;
+}
+
+.plain-meta .expand > .field {
+	margin-bottom: 0;
+}
+
+.plain-meta .expand .child {
+	padding: 24px 0 12px 0;
+}

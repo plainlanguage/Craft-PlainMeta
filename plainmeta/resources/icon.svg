@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="594px" height="594px" viewBox="0 0 594 594" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="icon" sketch:type="MSArtboardGroup">
+            <path d="M240.633222,38 L355.085316,38.9776812 L546.999988,148.15827 L547,588 L47,588 L47,148.15827 L240.633222,38 Z M297,141 C315.225397,141 330,126.225397 330,108 C330,89.7746033 315.225397,75 297,75 C278.774603,75 264,89.7746033 264,108 C264,126.225397 278.774603,141 297,141 Z" id="BG-Copy" fill="#BFC1BF" sketch:type="MSShapeGroup"></path>
+            <path d="M240.633222,15 L355.085316,15.9776812 L546.999988,125.15827 L547,565 L47,565 L47,125.15827 L240.633222,15 Z M297,118 C315.225397,118 330,103.225397 330,85 C330,66.7746033 315.225397,52 297,52 C278.774603,52 264,66.7746033 264,85 C264,103.225397 278.774603,118 297,118 Z" id="BG" stroke="#ECEDEC" stroke-width="15" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <g id="&lt;-+-&lt;-copy-2-+-/" sketch:type="MSLayerGroup" transform="translate(93.000000, 228.000000)">
+                <path d="M118.192323,169.019659 L0.0733838156,110.250822 L0.0733838156,71.6766814 L118.192323,12.9078443 L118.192323,43.9940631 L23.9729357,90.9637514 L118.192323,137.93344 L118.192323,169.019659 Z" id="&lt;" fill="#314454" sketch:type="MSShapeGroup"></path>
+                <path d="M294.807677,169.858969 L412.926616,111.090132 L412.926616,72.5159922 L294.807677,13.7471551 L294.807677,44.8333739 L389.027064,91.8030623 L294.807677,138.772751 L294.807677,169.858969 Z" id="&lt;-copy-2" fill="#314454" sketch:type="MSShapeGroup"></path>
+                <path d="M244.786713,0.318181818 L225.192328,0.318181818 L149.224381,181.151515 L168.818766,181.151515 L188.41315,181.151515 L264.381097,0.318181818 L244.786713,0.318181818 Z" id="/" fill="#EF620D" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

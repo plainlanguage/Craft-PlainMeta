@@ -1,0 +1,270 @@
+{% import "_includes/forms" as forms %}
+
+<div class="plain-meta">
+	<section class="social">
+
+		<header>
+			<h3>Open Graph</h3>
+			<p>Metadata for Facebook, Google+ and Pinterest</p>
+		</header>
+		<div class="group">
+
+			<div class="block">
+				{{ forms.textField({
+					label: "Title"|t,
+					id   : handle~'socialOGTitle',
+					name : handle~'[socialOGTitle]',
+					value: socialOGTitle,
+				}) }}
+
+				<div class="max">
+					{{ forms.textareaField({
+						label: "Description"|t,
+						id   : handle~'socialOGDescription',
+						name : handle~'[socialOGDescription]',
+						value: socialOGDescription,
+					}) }}
+					<div class="countdown" data-max="300">
+						<span class="live">0</span>&nbsp;/&nbsp;300 Characters
+					</div>
+				</div>
+			</div>
+			<div class="block">
+				<div class="field">
+					<div class="heading">
+						<label for="">Image</label>
+						<div class="instructions">
+							The &ldquo;share&rdquo; image. 1200 x 630 pixels minimum is best, 600 x 315 pixels minimum is next best.
+						</div>
+					</div>
+					<div class="input">
+						{% if assetsSourceExists %}
+							{{ forms.elementSelect({
+								elements: socialOGImageElements,
+								id: handle~'socialOGImageId',
+								name: handle~'[socialOGImageId]',
+								elementType: elementType,
+								criteria: {"kind":[],"localeEnabled":null,"locale":"en_us"},
+								sourceElementId: socialOGImageId,
+								jsClass: 'Craft.AssetSelectInput',
+								addButtonLabel: 'Select Image',
+								limit: 1,
+							}) }}
+						{% else %}
+							<p class="error">No assets sources currently exist. <a href="{{ newAssetsSourceUrl }}">Create one now...</a></p>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="block">
+				{# Video File/Embed OG #}
+				{% include 'plainmeta/_includes/opengraph/video' %}
+			</div>
+			<!-- <div class="block">
+				{# Video File/Embed OG #}
+				{# {% include 'plainmeta/_includes/opengraph/audio' %} #}
+			</div> -->
+			<div class="block">
+				{{ forms.selectField({
+					label       : "Content Type"|t,
+					instructions: "The type of content",
+					class       : "has-addl-fields",
+					id          : handle~'socialOGType',
+					name        : handle~'[socialOGType]',
+					value       : socialOGType,
+					options: {
+						article              : "Article",
+						book                 : "Book",
+						'music.song'         : "Music - Song",
+						'music.album'        : "Music - Album",
+						'music.playlist'     : "Music - Playlist",
+						'music.radio_station': "Music - Radio Station",
+						profile              : "Profile",
+						'video.movie'        : "Video - Movie",
+						'video.episode'		 : "Video - Episode",
+						'video.tv_show'		 : "Video - TV Show",
+						'video.other'		 : "Video - Other",
+						website              : "Website",
+					}
+				}) }}
+			</div>
+		</div>
+	</section>
+
+	<section class="twitter">
+		<header>
+			<h3>Twitter</h3>
+			<p>Metadata for Twitter Cards</p>
+		</header>
+		<div class="group">
+
+			<div class="block">
+				<div class="max">
+					{{ forms.textField({
+						label: "Title"|t,
+						instructions: "Summary title less than 70 characters",
+						id   : handle~'socialTwitterTitle',
+						name : handle~'[socialTwitterTitle]',
+						value: socialTwitterTitle,
+					}) }}
+					<div class="countdown" data-max="70">
+						<span class="live">0</span>&nbsp;/&nbsp;70 Characters
+					</div>
+				</div>
+
+				<div class="max">
+					{{ forms.textareaField({
+						label       : "Description"|t,
+						instructions: "Page description less than 200 characters",
+						id          : handle~'socialTwitterDescription',
+						name        : handle~'[socialTwitterDescription]',
+						value       : socialTwitterDescription,
+					}) }}
+					<div class="countdown" data-max="200">
+						<span class="live">0</span>&nbsp;/&nbsp;200 Characters
+					</div>
+				</div>
+			</div>
+
+			<div class="block">
+				{{ forms.selectField({
+					label       : "Content Type"|t,
+					instructions: "The type of content",
+					class       : "has-addl-fields",
+					id          : handle~'socialTwitterType',
+					name        : handle~'[socialTwitterType]',
+					value       : socialTwitterType,
+					options: {
+						summary            : "Summary",
+						summary_large_image: "Summary w/ Large Image",
+						photo              : "Photo",
+						app                : "App",
+						product            : "Product",
+					}
+				}) }}
+
+				<div class="addl-fields">
+					{% include 'plainmeta/_includes/twitter/summary' %} {# Summary Card #}
+					{% include 'plainmeta/_includes/twitter/summary-large-image' %} {# Card - Summary Card with Large Image #}
+					{% include 'plainmeta/_includes/twitter/photo' %} {# Photo Card #}
+					{% include 'plainmeta/_includes/twitter/app' %} {# App Card #}
+					{% include 'plainmeta/_includes/twitter/product' %} {# Product Card #}
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="seo">
+		<h2>SEO Meta</h2>
+		<div class="group last">
+
+			<div class="block">
+				<div class="max">
+					{{ forms.textField({
+						label       : "Title"|t,
+						instructions: "Title display in search engines results. Maximum length 70 characters.",
+						id          : handle~'seoTitle',
+						name        : handle~'[seoTitle]',
+						value       : seoTitle,
+					}) }}
+					<div class="countdown" data-max="70">
+						<span class="live">0</span>&nbsp;/&nbsp;70 Characters
+					</div>
+				</div>
+
+				<div class="max">
+					{{ forms.textareaField({
+						label       : "Description"|t,
+						instructions: "Description displayed in search engine results. Maximum length 155 characters.",
+						id          : handle~'seoDescription',
+						name        : handle~'[seoDescription]',
+						value       : seoDescription,
+					}) }}
+					<div class="countdown" data-max="155">
+						<span class="live">0</span>&nbsp;/&nbsp;155 Characters
+					</div>
+				</div>
+
+			</div>
+
+			<div class="block">
+				{{ forms.textField({
+					label       :  "Meta Canonical URL"|t,
+					instructions: "The canonical URL that this page should point to. Cross domain canonical supported too. Should be a fully-qualified URL in the format <strong><em>http://domain.com/path</em></strong>",					id          : handle~'seoCanonicalUrl',
+					name        : handle~'[seoCanonicalUrl]',
+					value       : seoCanonicalUrl,
+				}) }}
+			</div>
+
+			<div class="block">
+				{{ forms.selectField({
+					label       : "Robots Index"|t,
+					instructions: "Should robots index this page?",
+					id          : handle~'seoRobotsIndex',
+					name        : handle~'[seoRobotsIndex]',
+					value       : seoRobotsIndex,
+					options: {
+						index  : "Index",
+						noindex: "No Index",
+					}
+				}) }}
+
+				{{ forms.selectField({
+					label       : "Robots Follow"|t,
+					instructions: "Should robots follow links on this page?",
+					id          : handle~'seoRobotsFollow',
+					name        : handle~'[seoRobotsFollow]',
+					value       : seoRobotsFollow,
+					options: {
+						follow  : "Follow",
+						nofollow: "No Follow",
+					}
+				}) }}
+			</div>
+
+			<div class="block">
+				{{ forms.selectField({
+					label       : "Sitemap Priority"|t,
+					instructions: "The priority given to this page in the XML sitemap.",
+					id          : handle~'seoSitemapPriority',
+					name        : handle~'[seoSitemapPriority]',
+					value       : seoSitemapPriority,
+					options: {
+						""   : "Select",
+						"1"  : "1 - Highest Priority",
+						"0.9": "0.9",
+						"0.8": "0.8 - Default for first-tier pages",
+						"0.7": "0.7",
+						"0.6": "0.6 - Default for second-tier pages and posts",
+						"0.5": "0.5 - Medium priority",
+						"0.4": "0.4",
+						"0.3": "0.3",
+						"0.2": "0.2",
+						"0.1": "0.1 - Lowest priority",
+					}
+				}) }}
+			</div>
+
+			<div class="block">
+				{{ forms.selectField({
+					label       : "Update Frequency"|t,
+					instructions: "How frequently the page is likely to change.",
+					id          : handle~'seoSitemapChangeFrequency',
+					name        : handle~'[seoSitemapChangeFrequency]',
+					value       : seoSitemapChangeFrequency,
+					options: {
+						"always" 	: "Always",
+						"hourly" 	: "Hourly",
+						"daily" 	: "Daily",
+						"weekly" 	: "Weekly",
+						"monthly" 	: "Monthly",
+						"yearly" 	: "Yearly",
+						"never" 	: "Never",
+					}
+				}) }}
+			</div>
+
+		</div>
+	</section>
+</div>

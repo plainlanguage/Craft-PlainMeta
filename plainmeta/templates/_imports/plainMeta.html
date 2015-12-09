@@ -1,0 +1,149 @@
+{# -- Standard meta tag <meta name=""> -- #}
+{%- macro metaName(property, content) -%}
+{% spaceless %}
+	{% if content | length -%}
+	<meta name="{{ property }}" content="{{ content }}" />
+	{% endif %}
+{% endspaceless %}
+{%- endmacro -%}
+
+{# -- property meta tag <meta property=""> -- #}
+{%- macro metaProperty(property, content) -%}
+{% spaceless %}
+	{% if content | length -%}
+	<meta property="{{ property }}" content="{{ content }}" />
+	{% endif %}
+{% endspaceless %}
+{%- endmacro -%}
+
+{# -- Standard Link tag -- #}
+{%- macro metaLink(property, content) -%}
+{% spaceless %}
+	{% if content | length %}
+	<link rel="{{ property }}" content="{{ content }}" />
+	{% endif %}
+{% endspaceless %}
+{%- endmacro -%}
+
+{# -- Any items that include assets - we need to parse the Asset ID to output its URL -- #}
+{%- macro metaAsset(property, content) -%}
+{% spaceless %}
+	{% if content | length %}
+	<meta property="{{ property }}" content="{{ craft.plainMeta.asset( content ).url }}" />
+	{% endif %}
+{% endspaceless %}
+{%- endmacro -%}
+
+{# -- Robots Meta -- #}
+{%- macro metaRobots(data) -%}
+{% spaceless %}
+	<meta name="robots" content="{{ data.seoRobotsIndex }}, {{ data.seoRobotsFollow }}" />
+{% endspaceless %}
+{%- endmacro -%}
+
+{# -- Open Graph Video -- #}
+{%- macro metaObjectOpenGraphMedia(data) -%}
+{% spaceless %}
+	{# Video #}
+	{%- if data.socialOGVideoInclude == true -%}
+		{% if data.socialOGVideoEmbeddedUrl | length -%}
+			{% set videoUrl = craft.plainMeta.getVideoUrl(data.socialOGVideoEmbeddedUrl) %}
+			{% if videoUrl[0]['url'] is defined %}
+			<meta property="og:video" content="{{ videoUrl[0]['url'] }}">
+			<meta propery="og:video:secure_url" content="{{ videoUrl[0]['url'] | replace({'http': 'https'}) }}">
+			{% endif %}
+		{% endif %}
+		{# {% if data.socialOGVideoContentId | length %}
+			{% spaceless %}<meta property="og:video" content="{{ craft.plainMeta.asset( data.socialOGVideoContentId ).url }}" />{% endspaceless %}
+		{% endif %}
+		{% if data.socialOGVideoType %}
+			{% spaceless %}<meta property="og:video:type" content="{{ data.socialOGVideoType }}" />{% endspaceless %}
+		{% endif %}
+		{% if data.socialOGVideoWidth %}
+			{% spaceless %}<meta property="og:video:width" content="{{ data.socialOGVideoWidth }}" />{% endspaceless %}
+		{% endif %}
+		{% if data.socialOGVideoHeight %}
+			{% spaceless %}<meta property="og:video:height" content="{{ data.socialOGVideoHeight }}" />{% endspaceless %}
+		{% endif %}
+	{%- endif -%} #}
+	{# Audio #}
+	{# {% if data.socialOGAudioInclude == true -%}
+		{% if data.socialOGAudioEmbeddedUrl | length %}
+		<meta property="og:audio" content="{{ data.socialOGAudioEmbeddedUrl }}">
+		{% endif %}
+		{% if data.socialOGAudioContentId | length -%}
+		<meta property="og:audio" content="{{ craft.plainMeta.asset( data.socialOGAudioContentId ).url }}">
+		{% endif %}
+		{% if data.socialOGAudioType %}
+		<meta property="og:audio:type" content="{{ data.socialOGAudioType }}">
+		{% endif %} #}
+	{%- endif -%}
+{% endspaceless %}
+{%- endmacro -%}
+
+{# -- Twitter Card -- #}
+{%- macro metaObjectTwitterCard(data) -%}
+{% spaceless %}
+	{%- switch data.socialTwitterType -%}
+		{% case "summary" -%}
+			{% if data.socialTwitterSummaryImageId | length -%}
+			<meta property="twitter:image" content="{{ craft.plainMeta.asset(data.socialTwitterSummaryImageId).url }}">
+			{%- endif %}
+		{% case "summary_large_image" %}
+			{% if data.socialTwitterSummaryLargeImageId | length -%}
+			<meta property="twitter:image" content="{{ craft.plainMeta.asset(data.socialTwitterSummaryLargeImageId).url }}">
+			{%- endif %}
+		{% case "photo" %}	
+			{% if data.socialTwitterPhotoId | length -%}
+			<meta property="twitter:image" content="{{ craft.plainMeta.asset(data.socialTwitterPhotoId).url }}">
+			{%- endif %}
+		{% case "app" %}
+			{% if data.socialTwitterAppCountry | length -%}
+				<meta property="twitter:app:country" content="{{ data.socialTwitterAppCountry }}">
+			{%- endif %}
+			{% if data.socialTwitterAppIphoneName -%}
+				<meta property="twitter:app:name:iphone" content="{{ data.socialTwitterAppIphoneName }}">
+			{%- endif %}
+			{% if data.socialTwitterAppIphoneId %}
+				<meta property="twitter:app:id:iphone" content="{{ data.socialTwitterAppIphoneId }}">
+			{% endif %}
+			{% if data.socialTwitterAppIphoneUrl %}
+				<meta property="twitter:app:url:iphone" content="{{ data.socialTwitterAppIphoneUrl }}">
+			{% endif %}
+			{% if data.socialTwitterAppIpadName %}
+				<meta property="twitter:app:name:ipad" content="{{ data.socialTwitterAppIpadName }}">
+			{% endif %}
+			{% if data.socialTwitterAppIpadId %}
+				<meta property="twitter:app:id:ipad" content="{{ data.socialTwitterAppIpadId }}">
+			{% endif %}
+			{% if data.socialTwitterAppIpadUrl %}
+				<meta property="twitter:app:ur:ipad" content="{{ data.socialTwitterAppIpadUrl }}">
+			{% endif %}
+			{% if data.socialTwitterAppAndroidName %}
+				<meta property="twitter:app:name:googleplay" content="{{ data.socialTwitterAppAndroidName }}">
+			{% endif %}
+			{% if data.socialTwitterAppAndroidId %}
+				<meta property="twitter:app:id:googleplay" content="{{ data.socialTwitterAppAndroidId }}">
+			{% endif %}
+			{% if data.socialTwitterAppAndroidUrl %}
+				<meta property="twitter:app:url:googleplay" content="{{ data.socialTwitterAppAndroidUrl }}">
+			{% endif %}
+		{% case "product" %}	
+			{% if data.socialTwitterProductImageId | length -%}
+			<meta property="twitter:image" content="{{ craft.plainMeta.asset(data.socialTwitterProductImageId).url }}">
+			{% endif %}
+			{% if data.socialTwitterProductData1 %}
+				<meta property="twitter:data1" content="{{ data.socialTwitterProductData1 }}">
+			{% endif %}
+			{% if data.socialTwitterProductLabel1 %}
+				<meta property="twitter:label1" content="{{ data.socialTwitterProductLabel1 }}">
+			{% endif %}
+			{% if data.socialTwitterProductData2 %}
+				<meta property="twitter:data2" content="{{ data.socialTwitterProductData2 }}">
+			{% endif %}
+			{% if data.socialTwitterProductLabel2 %}
+				<meta property="twitter:label2" content="{{ data.socialTwitterProductLabel2 }}">
+			{% endif %}
+	{% endswitch %}
+{% endspaceless %}
+{%- endmacro -%}
